@@ -1,3 +1,4 @@
+
 *** Settings ***
 Documentation     A test suite containing tests related to invalid login.
 ...
@@ -7,11 +8,14 @@ Documentation     A test suite containing tests related to invalid login.
 ...
 ...               This suite also demonstrates using setups and teardowns in
 ...               different levels.
-Suite Setup       Open Browser To Login Page
+Suite Setup       Open Browser through BrowserStack
 Suite Teardown    Close Browser
 Test Setup        Go To Login Page
 Test Template     Login With Invalid Credentials Should Fail
 Resource          resource.robot
+
+*** Variables ***
+${name}                        invalid_login
 
 *** Test Cases ***               USER NAME        PASSWORD
 Invalid Username                 invalid          ${VALID PASSWORD}
@@ -22,6 +26,7 @@ Empty Password                   ${VALID USER}    ${EMPTY}
 Empty Username And Password      ${EMPTY}         ${EMPTY}
 
 *** Keywords ***
+
 Login With Invalid Credentials Should Fail
     [Arguments]    ${username}    ${password}
     Input Username    ${username}

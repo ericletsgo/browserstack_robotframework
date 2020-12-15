@@ -5,8 +5,12 @@ Documentation     A test suite with a single test for valid login.
 ...               the imported resource file.
 Resource          resource.robot
 
+*** Variables ***
+${name}                        valid_login
+
 *** Test Cases ***
 Valid Login
+    Open Browser through BrowserStack
     Open Browser To Login Page
     Input Username    demo
     Input Password    mode
