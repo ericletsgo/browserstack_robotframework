@@ -12,18 +12,14 @@ are executed, and how logs and reports look like.
    :depth: 1
    :local:
 
-Downloading demo package
+Browserstack Integration
 ========================
 
-To get the demo, you can either `download`_ the repository from GitHub or checkout
-the `source code`_ directly. As a result you get ``WebDemo`` directory with
-``demoapp`` and ``login_tests`` sub directories.
+This repo is integrated with Browserstack. To start testing on Browserstack,
+input Browserstack username and access key in:
 
-Example `test cases`_ and `generated results`_ are available also online.
-There is thus no need to download the demo if you are not interested in
-`running it`__ yourself.
-
-__ `running demo`_
+    ./tests/app_tests/recourse.robot
+    ./tests/web_tests/resource.robot
 
 Demo application
 ================
@@ -43,6 +39,10 @@ Test case files as well as a resource file used by them are located in
 the ``login_test`` directory. Click file names below to see the latest versions
 online.
 
+`google_should_open.robot`_
+    A test suite with a single test for testing opening a browser on 
+    Browserstack
+
 `valid_login.robot`_
     A test suite with a single test for valid login.
 
@@ -59,11 +59,8 @@ online.
     This suite also demonstrates using setups and teardowns in
     different levels.
 
-`gherkin_login.robot`_
+`valid_login.robot`_
     A test suite with a single Gherkin style test.
-
-    This test is functionally identical to the example in the
-    `valid_login.robot`_ file.
 
 `resource.robot`_
     A resource file with reusable keywords and variables.
@@ -83,6 +80,8 @@ the demo yourself:
 
 - `report.html`_
 - `log.html`_
+
+Results will also be avaliable on the Browserstack dashboard
 
 Running demo
 ============
@@ -128,10 +127,11 @@ executed from the command line, using ``Ctrl-C`` is enough.
 Running tests
 -------------
 
-The `test cases`_ are located in the ``login_tests`` directory. They can be
+The `test cases`_ are located in the ``tests`` directory. They can be
 executed using the ``robot`` command::
 
-    robot login_tests
+    robot tests/app_tests
+    robot tests/web_tests
 
 .. note:: If you are using Robot Framework 2.9 or earlier, you need to
           use the ``pybot`` command instead.
@@ -139,25 +139,29 @@ executed using the ``robot`` command::
 You can also run an individual test case file and use various command line
 options supported by Robot Framework::
 
-    robot login_tests/valid_login.robot
+    robot tests/web_tests/google_should_open.robot
     robot --test InvalidUserName --loglevel DEBUG login_tests
 
 Run ``robot --help`` for more information about the command line usage and see
 `Robot Framework User Guide`_ for more details about test execution in general.
 
-Using different browsers
-------------------------
+Running tests in parallel
+-------------------------
 
-The browser that is used is controlled by ``${BROWSER}`` variable defined in
-`resource.robot`_ resource file. Firefox browser is used by default, but that
-can be easily overridden from the command line::
+Concurrent testing is possible with Pabot. To install pabot, use:
 
-    robot --variable BROWSER:Chrome login_tests
-    robot --variable BROWSER:IE login_tests
+    pip install -U robotframework-pabot
 
-Consult SeleniumLibrary_ documentation about supported browsers.
+The `test cases`_ are located in the ``tests`` directory. They can be
+executed in parallel using the ``pabot`` command::
+
+    pabot tests/app_tests
+    pabot tests/web_tests
+
 
 .. _Robot Framework: http://robotframework.org
+.. _Browserstack: http://browserstack.com
+.. _Browserstack Getting Started: https://www.browserstack.com/docs/automate/selenium/getting-started/python
 .. _SeleniumLibrary: https://github.com/robotframework/SeleniumLibrary
 .. _Python: http://python.org
 .. _pip: http://pip-installer.org
