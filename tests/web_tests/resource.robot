@@ -34,8 +34,8 @@ ${browserVersion}              latest
 # ${realMobile}                  true
 ${build}                       robotframework
 ${project}                     robotframework
-${browserstack_userName}       ericwang12
-${browserstack_accessKey}      MVztxmZaCjR51Sygtmhp
+${browserstack_userName}       
+${browserstack_accessKey}      
 ${browserstack.seleniumLogs}   true
 ${browserstack.appiumLogs}     true
 ${name}                        BS_Windows_8.1_IE_11.0

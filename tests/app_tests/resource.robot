@@ -28,8 +28,8 @@ ${device}                      iPhone 12
 ${app}                         bs://444bd0308813ae0dc236f8cd461c02d3afa7901d
 ${build}                       robotframework
 ${project}                     robotframework
-${browserstack_userName}       ericwang12
-${browserstack_accessKey}      MVztxmZaCjR51Sygtmhp
+${browserstack_userName}       
+${browserstack_accessKey}      
 ${browserstack.seleniumLogs}   true
 ${browserstack.appiumLogs}     true
 ${browserstack.networkLogs}    true
